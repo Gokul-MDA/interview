@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./bootstrap.min.css";
+
+import List from "./components/List";
+import Add from "./components/Add";
+
+import { Switch, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          Learn React
-        </a>
-      </header>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/add">
+                Add
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                List
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <Switch>
+        <Route path="/" component={List} exact />
+        <Route path="/add" component={Add} />
+      </Switch>
     </div>
   );
 }
